@@ -125,7 +125,7 @@ export class ChatGPTApi implements LLMApi {
       return "```\n" + JSON.stringify(res, null, 4) + "\n```";
     }
     // dalle3 model return url, using url create image message
-    if (res.data) {
+    if (Array.isArray(res.data)) {
       let url = res.data?.at(0)?.url ?? "";
       const b64_json = res.data?.at(0)?.b64_json ?? "";
       if (!url && b64_json) {
